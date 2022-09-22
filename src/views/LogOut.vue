@@ -2,6 +2,7 @@
   <h1>Log out</h1>
   <div class="container">
   <div class="formulario">
+    <h3>¡Hasta la próxima!</h3>
     <form @submit.prevent="handleLogOut">
       <button class="button">Log out</button>
     </form>
@@ -52,12 +53,14 @@ export default {
   .button {
     display: flex;
     flex-direction: column;
-    align-self: center;
+    background-color: lightblue;
+    color: white;
     font-size: 15px;
+    text-align: center;
+    font-weight: bold;
     border: none;
     border-radius: 20px;
     margin-top: 30px;
-    margin-left: 0px;
     padding: 15px;
     cursor: pointer;
   }

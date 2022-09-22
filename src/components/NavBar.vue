@@ -1,8 +1,9 @@
 <template>
-    <nav v-if="user">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/auth" v-if="!user">Sign up |</router-link>
-        <router-link to="/logout">Log out</router-link> |
+    <nav>
+        <router-link to="/">Home | </router-link>
+        <router-link to="/auth" v-if="!user">Sign up | </router-link>
+        <router-link to="/signin" v-if="!user">Sign in | </router-link>
+        <router-link to="/logout">Log out</router-link>
     </nav>
 </template>
 
@@ -19,6 +20,9 @@ export default {
 </script>
 
 <style scoped>
+nav a{
+  text-decoration: none;
+}
 .menu {
     display: flex;
     justify-content: space-around;
@@ -28,4 +32,5 @@ export default {
 li {
     list-style: none;
 }
+
 </style>

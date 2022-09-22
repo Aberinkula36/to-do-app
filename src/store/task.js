@@ -3,15 +3,22 @@ import supabase from '../supabase/index';
 
 export default defineStore('tasks', {
   state: () => ({
-    tasks: [],
+    tasks: null,
   }),
   actions: {
     async fetchTasks() {
-      const { data: tasks } = await supabase
+      const { data } = await supabase
         .from('tasks')
         .select('*')
-        .order('id', { ascending: false });
-      this.tasks = tasks;
+        .order('id', { ascending: true });
+      this.tasks = data;
+    },
+    async create(userId, title) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .insert([{ user_id: userId, title }]);
+      if (error) throw error;
+      if (data) this.user = data;
     },
   },
 });

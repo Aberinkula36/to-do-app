@@ -51,6 +51,8 @@ export default {
       try {
         await this.signIn(this.email, this.password);
       } catch (error) {
+        console.log(this.email);
+        console.log(this.password);
         console.log(error);
       }
     },
@@ -77,11 +79,13 @@ export default {
 .button {
   display: flex;
   flex-direction: column;
-  align-self: center;
+  background-color: lightblue;
+  color: white;
   font-size: 15px;
+  text-align: center;
+  font-weight: bold;
   border: none;
   border-radius: 20px;
-  margin-left: 35px;
   margin-top: 30px;
   padding: 15px;
   cursor: pointer;

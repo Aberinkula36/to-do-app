@@ -24,13 +24,13 @@ export default defineStore('userStore', {
       this.user = null;
     },
     async signIn(email, password) {
-      const { user, session, error } = await supabase.auth.signIn({
+      const { user, error } = await supabase.auth.signIn({
         email,
         password,
       });
       if (error) throw error;
       if (user) this.user = user;
-    }
+    },
   },
   persist: {
     enabled: true,
