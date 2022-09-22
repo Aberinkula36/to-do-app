@@ -1,7 +1,8 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import AuthView from '../views/AuthView.vue';
 import SignedIn from '../views/SignedIn.vue';
+import LogOut from '../views/LogOut.vue';
 
 const routes = [
   {
@@ -19,12 +20,17 @@ const routes = [
     name: 'signedin',
     component: SignedIn,
   },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: LogOut,
+  },
 ];
 
 /* INTERCEPTOR -> PUNTAZO EXTRA */
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 

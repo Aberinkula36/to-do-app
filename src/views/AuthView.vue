@@ -1,5 +1,5 @@
 <template>
-  <h1>Esta es la vista de SignUp/In</h1>
+  <h1>Sign Up</h1>
   <div class="container">
   <div class="formulario">
     <form @submit.prevent="handleSignUp">
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ['signUp']),
-    handleSignUp() {
+    async handleSignUp() {
       const validarEmail = (email) => {
         const validar = email
           .toLowerCase()
@@ -48,7 +48,11 @@ export default {
       if (this.password.length < 8) {
         alert('Por favor, introduzca una contraseña de mínimo 8 caracteres');
       }
-      this.signUp(this.email, this.password);
+      try {
+        await this.signUp(this.email, this.password);
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   watch: {
@@ -80,6 +84,7 @@ export default {
   margin-left: 35px;
   margin-top: 30px;
   padding: 15px;
+  cursor: pointer;
 }
 
 .formulario {

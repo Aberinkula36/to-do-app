@@ -1,7 +1,7 @@
 import { mapActions } from 'pinia';
 <template>
   <div class="home">
-    <h1>Esta es la vista de HOME </h1>
+    <h1>HOME </h1>
   </div>
 </template>
 
