@@ -6,15 +6,18 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import userStore from '@/store/user';
+import taskStore from '@/store/task';
 import NavBar from './components/NavBar.vue';
 
 export default {
   name: 'App',
   computed: {
     ...mapState(userStore, ['user']),
+    ...mapState(taskStore, ['tasks']),
   },
   methods: {
     ...mapActions(userStore, ['fetchUser']),
+    ...mapActions(taskStore, ['fetchTasks']),
   },
   components: {
     NavBar,
@@ -28,6 +31,12 @@ export default {
       } else {
         this.$router.push({ path: '/' });
       }
+    } catch (e) {
+      console.log(e);
+    }
+    try {
+      await this.fetchTasks();
+      console.log(this.tasks);
     } catch (e) {
       console.log(e);
     }

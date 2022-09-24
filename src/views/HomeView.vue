@@ -1,20 +1,17 @@
 import { mapActions } from 'pinia';
 <template>
-  <div class="home">
-    <h1>HOME </h1>
-    <h2>Crea una tarea</h2>
-    <div class="container">
-      <div class="formulario">
-        <form @submit.prevent="handleNewTask">
-          <label for="title">Título
-            <input id="title" type="text" v-model="title">
-          </label>
-          <!--<label for="desc">Descripción
-            <textarea id="desc" cols="30" rows="10" v-model="desc"></textarea>
-          </label>-->
-          <button class="button">Crear tarea</button>
-        </form>
-      </div>
+  <h2>Crea una tarea</h2>
+  <div class="container">
+    <div class="formulario">
+      <form @submit.prevent="handleNewTask">
+        <label for="title">Título
+          <input id="title" type="text" v-model="title">
+        </label>
+        <label for="desc">Descripción
+          <textarea id="desc" cols="30" rows="10" v-model="desc"></textarea>
+        </label>
+        <button class="button">Crear tarea</button>
+      </form>
     </div>
   </div>
 </template>
@@ -29,6 +26,7 @@ export default {
   data() {
     return {
       title: '',
+      desc: '',
     };
   },
   computed: {
@@ -39,7 +37,7 @@ export default {
     ...mapActions(taskStore, ['fetchTasks', 'create']),
     async handleNewTask() {
       try {
-        await this.create(this.user.id, this.title);
+        await this.create(this.user.id, this.title, this.desc);
         this.$router.push({ path: '/viewtasks' });
       } catch (e) {
         console.log(e);
@@ -49,7 +47,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   display: inline-block;
   border: 1px solid #dfdfdf;
@@ -58,8 +56,6 @@ export default {
 }
 
 .button {
-  display: flex;
-  flex-direction: column;
   background-color: lightblue;
   color: white;
   font-size: 15px;

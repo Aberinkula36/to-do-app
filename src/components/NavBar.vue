@@ -1,10 +1,11 @@
 <template>
-    <nav>
-        <router-link to="/">Home | </router-link>
-        <router-link to="/auth" v-if="!user">Sign up | </router-link>
-        <router-link to="/signin" v-if="!user">Sign in | </router-link>
-        <router-link to="/logout">Log out</router-link>
-    </nav>
+  <nav>
+    <router-link to="/">Home | </router-link>
+    <router-link to="/auth" v-if="!user">Sign up | </router-link>
+    <router-link to="/signin" v-if="!user">Sign in | </router-link>
+    <router-link to="/viewtasks">Mis tareas | </router-link>
+    <router-link to="/logout">Log out</router-link>
+  </nav>
 </template>
 
 <script>
@@ -20,17 +21,17 @@ export default {
 </script>
 
 <style scoped>
-nav a{
+nav a {
   text-decoration: none;
 }
+
 .menu {
-    display: flex;
-    justify-content: space-around;
-    margin-left: -40px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: -40px;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
-
 </style>

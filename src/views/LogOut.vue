@@ -1,12 +1,12 @@
 <template>
   <h1>Log out</h1>
   <div class="container">
-  <div class="formulario">
-    <h3>¡Hasta la próxima!</h3>
-    <form @submit.prevent="handleLogOut">
-      <button class="button">Log out</button>
-    </form>
-  </div>
+    <div class="formulario">
+      <h3>¡Hasta la próxima!</h3>
+      <form @submit.prevent="handleLogOut">
+        <button class="button">Log out</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -42,35 +42,35 @@ export default {
 };
 </script>
 
-  <style>
-  .container {
-    display: inline-block;
-    border: 1px solid lightblue;
-    border-radius: 20px;
-    padding: 40px;
-  }
+<style scoped>
+.container {
+  display: inline-block;
+  border: 1px solid lightblue;
+  border-radius: 20px;
+  padding: 40px;
+}
 
-  .button {
-    display: flex;
-    flex-direction: column;
-    background-color: lightblue;
-    color: white;
-    font-size: 15px;
-    text-align: center;
-    font-weight: bold;
-    border: none;
-    border-radius: 20px;
-    margin-top: 30px;
-    padding: 15px;
-    cursor: pointer;
-  }
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
 
-  .formulario {
-    display: inline-block;
-  }
+.button {
+  background-color: lightblue;
+  justify-content: center;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  margin-top: 30px;
+  padding: 15px;
+  cursor: pointer;
+}
 
-  label {
-    display: flex;
-    flex-direction: column;
-  }
-  </style>
+label {
+  display: flex;
+  flex-direction: column;
+}
+</style>

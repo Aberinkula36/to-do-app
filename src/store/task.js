@@ -13,10 +13,27 @@ export default defineStore('tasks', {
         .order('id', { ascending: true });
       this.tasks = data;
     },
-    async create(userId, title) {
+    async create(userId, title, desc) {
       const { data, error } = await supabase
         .from('tasks')
-        .insert([{ user_id: userId, title }]);
+        .insert([{ user_id: userId, title, desc }]);
+      if (error) throw error;
+      if (data) this.user = data;
+      this.tasks.push(this.tasks);
+    },
+    async edit(id, title, desc) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .update({ title, desc })
+        .match({ id });
+      if (error) throw error;
+      if (data) this.user = data;
+    },
+    async delete(title, desc) {
+      const { data, error } = await supabase
+        .from('tasks')
+        .delete()
+        .match({ title, desc });
       if (error) throw error;
       if (data) this.user = data;
     },

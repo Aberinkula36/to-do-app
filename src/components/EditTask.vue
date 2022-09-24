@@ -1,0 +1,87 @@
+<template>
+  <div class="container">
+    <div class="formulario">
+      <form @submit.prevent="editTask">
+        <p>Actualizando la tarea <br> <span class="actualizar">{{ taskProp.title }}</span></p>
+        <label for="title">{{ taskProp.title }}
+          <input id="title" type="text" v-model="title">
+        </label>
+        <label for="desc">{{ taskProp.desc }}
+          <textarea id="desc" cols="30" rows="10" v-model="desc"></textarea>
+        </label>
+        <button class="button">Actualizar tarea</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+import { mapActions } from 'pinia';
+import taskStore from '@/store/task';
+
+export default {
+  name: 'selectedTask',
+  props: {
+    taskProp: Object,
+  },
+  data() {
+    return {
+      title: '',
+      desc: '',
+    };
+  },
+  methods: {
+    ...mapActions(taskStore, ['fetchTasks', 'edit']),
+    async editTask() {
+      try {
+        await this.edit(this.taskProp.id, this.title, this.desc);
+        this.$router.push({ path: '/viewtasks' });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+p {
+  font-weight: bold;
+}
+
+.actualizar {
+  font-size: 20px;
+}
+.container {
+  background-color: lightblue;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  margin-top: 30px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+textarea {
+  background-color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 5px;
+  text-indent: 10px;
+}
+</style>
