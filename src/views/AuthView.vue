@@ -1,5 +1,6 @@
 <template>
-  <h1>Sign Up</h1>
+  <h1>ToDoApp</h1>
+  <h2>¿Todavía no estás registrado?</h2>
   <div class="container">
   <div class="formulario">
     <form @submit.prevent="handleSignUp">
@@ -8,8 +9,8 @@
       </label>
       <label for="password">Contraseña
         <input id="password" type="password" v-model="password">
-      </label>
-      <button class="button">SignUp</button>
+      </label> <br>
+      <button class="btn btn-info">¡Regístrate!</button>
     </form>
   </div>
   </div>
@@ -52,6 +53,7 @@ export default {
         await this.signUp(this.email, this.password);
       } catch (error) {
         console.log(error);
+        alert('Este email ya está registrado.');
       }
     },
   },
@@ -72,25 +74,17 @@ export default {
   border: 1px solid lightblue;
   border-radius: 20px;
   padding: 40px;
-}
-
-.button {
-  display: flex;
-  flex-direction: column;
-  background-color: lightblue;
-  color: white;
-  font-size: 15px;
-  text-align: center;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  margin-top: 30px;
-  padding: 15px;
-  cursor: pointer;
+  max-width: 500px;
 }
 
 .formulario {
   display: inline-block;
+}
+
+input {
+  border: 1px solid rgb(198, 198, 198);
+  border-radius: 20px;
+  text-indent: 10px;
 }
 
 label {

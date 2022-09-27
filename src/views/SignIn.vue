@@ -1,5 +1,6 @@
 <template>
-  <h1>Sign In</h1>
+  <h1>ToDoApp</h1>
+  <h2>¡Comienza a crear tareas!</h2>
   <div class="container">
   <div class="formulario">
     <form @submit.prevent="handleSignIn">
@@ -8,8 +9,8 @@
       </label>
       <label for="password">Contraseña
         <input id="password" type="password" v-model="password">
-      </label>
-      <button class="button">SignIn</button>
+      </label> <br>
+      <button class="btn btn-info">Entrar</button>
     </form>
   </div>
   </div>
@@ -51,9 +52,8 @@ export default {
       try {
         await this.signIn(this.email, this.password);
       } catch (error) {
-        console.log(this.email);
-        console.log(this.password);
         console.log(error);
+        alert('Datos de acceso incorrectos');
       }
     },
   },
@@ -74,25 +74,17 @@ export default {
   border: 1px solid lightblue;
   border-radius: 20px;
   padding: 40px;
-}
-
-.button {
-  display: flex;
-  flex-direction: column;
-  background-color: lightblue;
-  color: white;
-  font-size: 15px;
-  text-align: center;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  margin-top: 30px;
-  padding: 15px;
-  cursor: pointer;
+  max-width: 500px;
 }
 
 .formulario {
   display: inline-block;
+}
+
+input {
+  border: 1px solid rgb(198, 198, 198);
+  border-radius: 20px;
+  text-indent: 10px;
 }
 
 label {

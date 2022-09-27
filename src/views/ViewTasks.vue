@@ -1,15 +1,16 @@
-<!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
+<!-- eslint-disable max-len -->
 <template>
   <h1>Lista de tareas</h1>
   <div class="contenedor-tarea">
     <EditTask v-if="task" :taskProp="task" />
+    <DeleteTask v-if="taskId" :taskId="taskId" />
   </div>
   <div class="contenedor">
     <div class="tareas" v-for="task in tasks" :key="task.id">
       <div class="tasks">{{ task.title }} </div>
       <div class="description">{{ task.desc }} </div>
-      <button class="edit-button" @click="selectTask(task)">Editar</button>
-      <button class="delete-button">Borrar</button>
+      <button class="btn btn-outline-primary" @click="selectTask(task)">Editar</button>
+      <button class="btn btn-outline-danger" @click="deleteTask(task.id)">Borrar</button>
     </div>
   </div>
 </template>
@@ -18,11 +19,13 @@
 import { mapState } from 'pinia';
 import taskStore from '@/store/task';
 import EditTask from '@/components/EditTask.vue';
+import DeleteTask from '@/components/DeleteTask.vue';
 
 export default {
   data() {
     return {
       task: null,
+      taskId: null,
     };
   },
   computed: {
@@ -30,82 +33,41 @@ export default {
   },
   components: {
     EditTask,
+    DeleteTask,
   },
   methods: {
     selectTask(task) {
       this.task = task;
+    },
+    deleteTask(id) {
+      this.taskId = id;
     },
   },
 };
 </script>
 
 <style scoped>
-.contenedor-tarea {
-  display: inline-block;
-}
 .contenedor {
-  display: block;
   width: 30%;
   margin-left: 100px;
 }
 
 .tareas {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   border: 1px solid lightblue;
   border-radius: 20px;
   margin: 20px;
   padding: 30px;
 }
-.edit-button {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  color: blue;
-  font-size: 12px;
-  text-align: center;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  padding: 10px;
-  cursor: pointer;
-  width: 15%;
-  margin-bottom: 10px;
-}
-
-.edit-button:hover {
-  opacity: 0.7;
-  transition: 0.3s;
-}
-
-.delete-button {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  color: salmon;
-  font-size: 10px;
-  text-align: center;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  padding: 10px;
-  cursor: pointer;
-  width: 15%;
-}
-
-.delete-button:hover {
-  opacity: 0.7;
-  transition: 0.3s;
-}
-
 .tasks {
+  background-color: lightblue;
+  border-radius: 20px;
   font-weight: bold;
   padding: 15px;
+  margin-bottom: -10px;
 }
 
 .description {
-  background-color: lightblue;
+  background-color: rgb(241, 241, 241);
   border-radius: 20px;
   padding: 15px;
   margin: 10px;

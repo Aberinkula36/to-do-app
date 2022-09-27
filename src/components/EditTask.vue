@@ -8,8 +8,9 @@
         </label>
         <label for="desc">{{ taskProp.desc }}
           <textarea id="desc" cols="30" rows="10" v-model="desc"></textarea>
-        </label>
-        <button class="button">Actualizar tarea</button>
+        </label> <br>
+        <button class="btn btn-secondary">Actualizar tarea</button>
+        <button class="btn btn-danger" @click="returnToTasks()">Cancelar</button>
       </form>
     </div>
   </div>
@@ -40,6 +41,9 @@ export default {
         console.log(e);
       }
     },
+    returnToTasks() {
+      this.$router.push({ path: '/' });
+    },
   },
 };
 </script>
@@ -56,6 +60,7 @@ p {
   background-color: lightblue;
   border-radius: 20px;
   padding: 40px;
+  max-width: 500px;
 }
 
 .button {

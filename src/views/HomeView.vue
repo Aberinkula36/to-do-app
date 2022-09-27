@@ -9,8 +9,8 @@ import { mapActions } from 'pinia';
         </label>
         <label for="desc">Descripción
           <textarea id="desc" cols="30" rows="10" v-model="desc"></textarea>
-        </label>
-        <button class="button">Crear tarea</button>
+        </label> <br>
+        <button class="btn btn-outline-info">Crear tarea</button>
       </form>
     </div>
   </div>
@@ -49,23 +49,10 @@ export default {
 
 <style scoped>
 .container {
-  display: inline-block;
   border: 1px solid #dfdfdf;
   border-radius: 20px;
   padding: 40px;
-}
-
-.button {
-  background-color: lightblue;
-  color: white;
-  font-size: 15px;
-  text-align: center;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  margin-top: 30px;
-  padding: 15px;
-  cursor: pointer;
+  max-width: 500px;
 }
 
 .formulario {

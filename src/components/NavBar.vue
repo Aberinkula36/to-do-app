@@ -1,10 +1,10 @@
 <template>
   <nav>
-    <router-link to="/">Home | </router-link>
+    <router-link to="/" v-if="user">Home </router-link>
     <router-link to="/auth" v-if="!user">Sign up | </router-link>
-    <router-link to="/signin" v-if="!user">Sign in | </router-link>
-    <router-link to="/viewtasks">Mis tareas | </router-link>
-    <router-link to="/logout">Log out</router-link>
+    <router-link to="/signin" v-if="!user">Sign in </router-link>
+    <router-link to="/viewtasks" v-if="user">| Mis tareas </router-link>
+    <router-link to="/logout" v-if="user"> | Log out</router-link>
   </nav>
 </template>
 

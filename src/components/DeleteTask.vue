@@ -1,18 +1,11 @@
 <template>
-    <div class="container">
-        <div class="formulario">
-            <form @submit.prevent="deleteTask">
-            <p>Actualizando la tarea <br> <span class="actualizar">{{ taskProp.title }}</span></p>
-                <label for="title">{{ taskProp.title }}
-                    <input id="title" type="text" v-model="title">
-                </label>
-                <label for="desc">{{ taskProp.desc }}
-                    <textarea id="desc" cols="30" rows="10" v-model="desc"></textarea>
-                </label>
-                <button class="button">Actualizar tarea</button>
-            </form>
-        </div>
+  <div class="container">
+    <div class="formulario">
+        <p>¿Está seguro de que desea eliminar esta tarea? <br></p>
+        <button class="btn btn-secondary" @click="deleteTask()">Sí</button>
+        <button class="btn btn-secondary" @click="returnToTasks()">No</button>
     </div>
+  </div>
 </template>
 
 <script>
@@ -24,26 +17,26 @@ export default {
   name: 'deleteTask',
   props: {
     taskProp: Object,
-  },
-  data() {
-    return {
-      title: '',
-      desc: '',
-    };
+    taskId: Number,
   },
   computed: {
     ...mapState(taskStore, ['tasks']),
     ...mapState(userStore, ['user']),
   },
   methods: {
-    ...mapActions(taskStore, ['fetchTasks', 'edit']),
+    ...mapActions(taskStore, ['fetchTasks', 'delete']),
     async deleteTask() {
       try {
-        await this.delete(this.title, this.desc);
-        this.$router.push({ path: '/viewtasks' });
+        console.log('taskId: ', this.taskId);
+        await this.delete(this.taskId);
+        console.log(this.taskId);
+        this.$router.push({ path: '/' });
       } catch (e) {
         console.log(e);
       }
+    },
+    returnToTasks() {
+      this.$router.push({ path: '/' });
     },
   },
 };

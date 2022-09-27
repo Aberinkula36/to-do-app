@@ -1,10 +1,10 @@
 <template>
-  <h1>Log out</h1>
+  <h1>¿Te vas? </h1>
   <div class="container">
     <div class="formulario">
       <h3>¡Hasta la próxima!</h3>
       <form @submit.prevent="handleLogOut">
-        <button class="button">Log out</button>
+        <button class="btn btn-info">Log out</button>
       </form>
     </div>
   </div>
@@ -44,10 +44,10 @@ export default {
 
 <style scoped>
 .container {
-  display: inline-block;
   border: 1px solid lightblue;
   border-radius: 20px;
   padding: 40px;
+  max-width: 500px;
 }
 
 .formulario {
