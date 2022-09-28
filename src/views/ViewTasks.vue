@@ -1,3 +1,4 @@
+<!-- eslint-disable vuejs-accessibility/label-has-for -->
 <!-- eslint-disable max-len -->
 <template>
   <h1>Lista de tareas</h1>
@@ -7,10 +8,15 @@
   </div>
   <div class="contenedor">
     <div class="tareas" v-for="task in tasks" :key="task.id">
-      <div class="tasks">{{ task.title }} </div>
-      <div class="description">{{ task.desc }} </div>
-      <button class="btn btn-outline-primary" @click="selectTask(task)">Editar</button>
-      <button class="btn btn-outline-danger" @click="deleteTask(task.id)">Borrar</button>
+      <div class="tasks"> {{ task.title }} </div>
+      <div class="description"> {{ task.desc }} </div>
+      <div class="fecha"> {{ task.fecha }} </div>
+      <div class="finalizada">
+        <input type="checkbox" id="completada" name="completada" value="completada">
+        <label for="completada"> Finalizada</label> <br>
+      </div>
+      <button class="btn btn-primary button" @click="selectTask(task)">Editar</button>
+      <button class="btn btn-outline-danger button" @click="deleteTask(task.id)">Borrar</button>
     </div>
   </div>
 </template>
@@ -48,8 +54,12 @@ export default {
 
 <style scoped>
 .contenedor {
-  width: 30%;
-  margin-left: 100px;
+  display: inline-block;
+  max-width: 500px;
+}
+
+.button {
+  margin: 5px;
 }
 
 .tareas {
@@ -58,6 +68,7 @@ export default {
   margin: 20px;
   padding: 30px;
 }
+
 .tasks {
   background-color: lightblue;
   border-radius: 20px;

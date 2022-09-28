@@ -8,8 +8,14 @@
         </label>
         <label for="desc">{{ taskProp.desc }}
           <textarea id="desc" cols="30" rows="10" v-model="desc"></textarea>
+        </label>
+        <label for="fecha">Fecha
+          <input id="fecha" type="date" v-model="fecha">
+        </label>
+        <label for="completada"> Finalizada
+          <input id="completada" type="checkbox" v-model="is_complete">
         </label> <br>
-        <button class="btn btn-secondary">Actualizar tarea</button>
+        <button class="btn btn-secondary" @click="editTask()">Actualizar tarea</button>
         <button class="btn btn-danger" @click="returnToTasks()">Cancelar</button>
       </form>
     </div>
@@ -29,14 +35,15 @@ export default {
     return {
       title: '',
       desc: '',
+      fecha: '',
     };
   },
   methods: {
     ...mapActions(taskStore, ['fetchTasks', 'edit']),
     async editTask() {
       try {
-        await this.edit(this.taskProp.id, this.title, this.desc);
-        this.$router.push({ path: '/viewtasks' });
+        await this.edit(this.taskProp.id, this.title, this.desc, this.fecha);
+        this.$router.go(0);
       } catch (e) {
         console.log(e);
       }
@@ -56,6 +63,7 @@ p {
 .actualizar {
   font-size: 20px;
 }
+
 .container {
   background-color: lightblue;
   border-radius: 20px;

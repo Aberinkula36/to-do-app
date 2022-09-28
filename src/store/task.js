@@ -13,18 +13,20 @@ export default defineStore('tasks', {
         .order('id', { ascending: true });
       this.tasks = data;
     },
-    async create(userId, title, desc) {
+    async create(userId, title, desc, fecha) {
       const { data, error } = await supabase
         .from('tasks')
-        .insert([{ user_id: userId, title, desc }]);
+        .insert([{
+          user_id: userId, title, desc, fecha,
+        }]);
       if (error) throw error;
       if (data) this.user = data;
       this.tasks.push(data[0]);
     },
-    async edit(id, title, desc) {
+    async edit(id, title, desc, fecha) {
       const { data, error } = await supabase
         .from('tasks')
-        .update({ title, desc })
+        .update({ title, desc, fecha })
         .match({ id });
       if (error) throw error;
       if (data) this.user = data;
@@ -36,8 +38,6 @@ export default defineStore('tasks', {
         .match({ id });
       if (error) throw error;
       if (data) this.user = data;
-      console.log('data ', data[0]);
-      console.log('index: ', this.tasks.indexOf(data[0]));
       const indexTask = this.tasks.indexOf(data[0]);
       this.tasks.splice(indexTask, 1);
     },

@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="formulario">
-        <p>¿Está seguro de que desea eliminar esta tarea? <br></p>
-        <button class="btn btn-secondary" @click="deleteTask()">Sí</button>
-        <button class="btn btn-secondary" @click="returnToTasks()">No</button>
+      <p>¿Está seguro de que desea eliminar esta tarea? <br></p>
+      <button class="btn btn-danger button" @click="deleteTask()">Sí</button>
+      <button class="btn btn-secondary button" @click="returnToTasks()">No</button>
     </div>
   </div>
 </template>
@@ -27,9 +27,7 @@ export default {
     ...mapActions(taskStore, ['fetchTasks', 'delete']),
     async deleteTask() {
       try {
-        console.log('taskId: ', this.taskId);
         await this.delete(this.taskId);
-        console.log(this.taskId);
         this.$router.push({ path: '/' });
       } catch (e) {
         console.log(e);
@@ -44,43 +42,48 @@ export default {
 
 <style scoped>
 p {
-    font-weight: bold;
-}
-
-.actualizar {
-    font-size: 20px;
-}
-
-.container {
-    background-color: lightblue;
-    border-radius: 20px;
-    padding: 40px;
+  font-weight: bold;
 }
 
 .button {
-    background-color: white;
-    color: black;
-    font-size: 15px;
-    text-align: center;
-    font-weight: bold;
-    border: none;
-    border-radius: 20px;
-    margin-top: 30px;
-    padding: 15px;
-    cursor: pointer;
+  margin: 5px;
+  width: 80px;
+}
+
+.actualizar {
+  font-size: 20px;
+}
+
+.container {
+  background-color: lightblue;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  margin-top: 30px;
+  padding: 15px;
+  cursor: pointer;
 }
 
 label {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 input,
 textarea {
-    background-color: white;
-    border-radius: 20px;
-    border: none;
-    padding: 5px;
-    text-indent: 10px;
+  background-color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 5px;
+  text-indent: 10px;
 }
 </style>

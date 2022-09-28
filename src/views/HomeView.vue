@@ -9,7 +9,14 @@ import { mapActions } from 'pinia';
         </label>
         <label for="desc">Descripción
           <textarea id="desc" cols="30" rows="10" v-model="desc"></textarea>
-        </label> <br>
+        </label>
+        <label for="fecha">Fecha
+          <input id="fecha" type="date" v-model="fecha">
+        </label>
+        <label for="completada">
+          <input id="completada" type="checkbox" v-model="is_complete" hidden>
+        </label>
+        <br>
         <button class="btn btn-outline-info">Crear tarea</button>
       </form>
     </div>
@@ -27,6 +34,8 @@ export default {
     return {
       title: '',
       desc: '',
+      fecha: '',
+      is_complete: '',
     };
   },
   computed: {
@@ -37,7 +46,7 @@ export default {
     ...mapActions(taskStore, ['fetchTasks', 'create']),
     async handleNewTask() {
       try {
-        await this.create(this.user.id, this.title, this.desc);
+        await this.create(this.user.id, this.title, this.desc, this.fecha, this.is_complete);
         this.$router.push({ path: '/viewtasks' });
       } catch (e) {
         console.log(e);
