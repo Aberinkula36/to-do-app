@@ -23,10 +23,12 @@ export default defineStore('tasks', {
       if (data) this.user = data;
       this.tasks.push(data[0]);
     },
-    async edit(id, title, desc, fecha) {
+    async edit(id, title, desc, fecha, isComplete) {
       const { data, error } = await supabase
         .from('tasks')
-        .update({ title, desc, fecha })
+        .update({
+          title, desc, fecha, isComplete,
+        })
         .match({ id });
       if (error) throw error;
       if (data) this.user = data;

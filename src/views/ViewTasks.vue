@@ -11,10 +11,8 @@
       <div class="tasks"> {{ task.title }} </div>
       <div class="description"> {{ task.desc }} </div>
       <div class="fecha"> {{ task.fecha }} </div>
-      <div class="finalizada">
-        <input type="checkbox" id="completada" name="completada" value="completada">
-        <label for="completada"> Finalizada</label> <br>
-      </div>
+      <div class="completada" v-if="task.isComplete">Completada ✅</div>
+      <div class="incompleta" v-if="!task.isComplete">Por completar</div>
       <button class="btn btn-primary button" @click="selectTask(task)">Editar</button>
       <button class="btn btn-outline-danger button" @click="deleteTask(task.id)">Borrar</button>
     </div>
@@ -83,4 +81,15 @@ export default {
   padding: 15px;
   margin: 10px;
 }
+
+.completada{
+  color: green;
+  font-weight: bold;
+}
+
+.incompleta{
+  color: gray;
+  font-weight: bold;
+}
+
 </style>

@@ -1,7 +1,7 @@
 import { mapActions } from 'pinia';
 <template>
-  <h2>Crea una tarea</h2>
   <div class="container">
+    <h2>Crea una tarea</h2>
     <div class="formulario">
       <form @submit.prevent="handleNewTask">
         <label for="title">Título
@@ -12,9 +12,6 @@ import { mapActions } from 'pinia';
         </label>
         <label for="fecha">Fecha
           <input id="fecha" type="date" v-model="fecha">
-        </label>
-        <label for="completada">
-          <input id="completada" type="checkbox" v-model="is_complete" hidden>
         </label>
         <br>
         <button class="btn btn-outline-info">Crear tarea</button>
@@ -35,7 +32,6 @@ export default {
       title: '',
       desc: '',
       fecha: '',
-      is_complete: '',
     };
   },
   computed: {

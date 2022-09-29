@@ -1,6 +1,6 @@
 <template>
-  <h2>¡Comienza a crear tareas!</h2>
   <div class="container">
+  <h1>¡Comienza a gestionar tus tareas! 📌</h1>
   <div class="formulario">
     <form @submit.prevent="handleSignIn">
       <label for="email">Email
@@ -17,6 +17,7 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
+import taskStore from '@/store/task';
 import userStore from '@/store/user';
 
 export default {
@@ -32,6 +33,7 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ['signIn']),
+    ...mapActions(taskStore, ['fetchTasks']),
     async handleSignIn() {
       const validarEmail = (email) => {
         const validar = email
@@ -50,6 +52,7 @@ export default {
       }
       try {
         await this.signIn(this.email, this.password);
+        await this.fetchTasks();
       } catch (error) {
         console.log(error);
         alert('Datos de acceso incorrectos');

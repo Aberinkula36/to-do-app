@@ -1,9 +1,10 @@
+<!-- eslint-disable max-len -->
 <template>
   <div class="container">
     <div class="formulario">
       <form @submit.prevent="editTask">
         <p>Actualizando la tarea <br> <span class="actualizar">{{ taskProp.title }}</span></p>
-        <label for="title">{{ taskProp.title }}
+        <label for="title">
           <input id="title" type="text" v-model="title">
         </label>
         <label for="desc">{{ taskProp.desc }}
@@ -12,11 +13,11 @@
         <label for="fecha">Fecha
           <input id="fecha" type="date" v-model="fecha">
         </label>
-        <label for="completada"> Finalizada
-          <input id="completada" type="checkbox" v-model="is_complete">
+        <label for="completada"> Completada
+          <input id="completada" type="checkbox" v-model="isComplete">
         </label> <br>
-        <button class="btn btn-secondary" @click="editTask()">Actualizar tarea</button>
-        <button class="btn btn-danger" @click="returnToTasks()">Cancelar</button>
+        <button class="btn btn-secondary button" @click="editTask()">Actualizar tarea</button>
+        <button class="btn btn-danger button" @click="returnToTasks()">Cancelar</button>
       </form>
     </div>
   </div>
@@ -33,16 +34,17 @@ export default {
   },
   data() {
     return {
-      title: '',
-      desc: '',
-      fecha: '',
+      title: this.taskProp.title,
+      desc: this.taskProp.desc,
+      fecha: this.taskProp.fecha,
+      isComplete: false,
     };
   },
   methods: {
     ...mapActions(taskStore, ['fetchTasks', 'edit']),
     async editTask() {
       try {
-        await this.edit(this.taskProp.id, this.title, this.desc, this.fecha);
+        await this.edit(this.taskProp.id, this.title, this.desc, this.fecha, this.isComplete);
         this.$router.go(0);
       } catch (e) {
         console.log(e);
@@ -72,16 +74,7 @@ p {
 }
 
 .button {
-  background-color: white;
-  color: black;
-  font-size: 15px;
-  text-align: center;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  margin-top: 30px;
-  padding: 15px;
-  cursor: pointer;
+  margin: 5px;
 }
 
 label {

@@ -1,10 +1,10 @@
 <template>
-  <h1>¿Te vas? </h1>
   <div class="container">
+    <h1>¿Te vas? </h1>
     <div class="formulario">
-      <h3>¡Hasta la próxima!</h3>
+      <h5>¡Hasta la próxima! <span class="big">🙋🏼‍♀️</span></h5>
       <form @submit.prevent="handleLogOut">
-        <button class="btn btn-info">Log out</button>
+        <button class="btn btn-info">Salir</button>
       </form>
     </div>
   </div>
@@ -55,18 +55,8 @@ export default {
   flex-direction: column;
 }
 
-.button {
-  background-color: lightblue;
-  justify-content: center;
-  color: white;
-  font-size: 15px;
-  text-align: center;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  margin-top: 30px;
-  padding: 15px;
-  cursor: pointer;
+.big {
+  font-size: 25px;
 }
 
 label {

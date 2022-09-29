@@ -1,6 +1,8 @@
+<!-- eslint-disable max-len -->
 <template>
-  <h2>¿Todavía no estás registrado?</h2>
   <div class="container">
+  <h1>¿Todavía no estás registrado?</h1>
+  <p>To-Do-App es un gestor de tareas creado para ti, <span class="fun">despistado/a <span class="big">🤔</span> </span>. Crea, modifica, y completa tareas sin olvidar nada por el camino. <span class="fun">¿A qué esperas?</span></p>
   <div class="formulario">
     <form @submit.prevent="handleSignUp">
       <label for="email">Email
@@ -17,6 +19,7 @@
 
 <script>
 import { mapState, mapActions } from 'pinia';
+import taskStore from '@/store/task';
 import userStore from '@/store/user';
 
 export default {
@@ -32,6 +35,7 @@ export default {
   },
   methods: {
     ...mapActions(userStore, ['signUp']),
+    ...mapActions(taskStore, ['fetchTasks']),
     async handleSignUp() {
       const validarEmail = (email) => {
         const validar = email
@@ -50,6 +54,7 @@ export default {
       }
       try {
         await this.signUp(this.email, this.password);
+        await this.fetchTasks();
       } catch (error) {
         console.log(error);
         alert('Este email ya está registrado.');
@@ -78,6 +83,15 @@ export default {
 
 .formulario {
   display: inline-block;
+}
+
+.fun {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.big {
+  font-size: 25px;
 }
 
 input {
