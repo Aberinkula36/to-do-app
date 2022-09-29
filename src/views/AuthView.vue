@@ -1,5 +1,4 @@
 <template>
-  <h1>ToDoApp</h1>
   <h2>¿Todavía no estás registrado?</h2>
   <div class="container">
   <div class="formulario">

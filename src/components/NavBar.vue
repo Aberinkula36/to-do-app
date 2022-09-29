@@ -1,4 +1,7 @@
 <template>
+  <div class="logo">
+    <img src="../assets/logo.jpg" alt="" class="img-fluid">
+  </div>
   <nav>
     <router-link to="/" v-if="user">Home </router-link>
     <router-link to="/auth" v-if="!user">Registro | </router-link>
@@ -21,6 +24,11 @@ export default {
 </script>
 
 <style scoped>
+.logo{
+  display: inline-block;
+  width: 140px;
+}
+
 nav a {
   text-decoration: none;
 }

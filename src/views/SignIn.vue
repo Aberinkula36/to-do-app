@@ -1,5 +1,4 @@
 <template>
-  <h1>ToDoApp</h1>
   <h2>¡Comienza a crear tareas!</h2>
   <div class="container">
   <div class="formulario">
