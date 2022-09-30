@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import 'animate.css';
 import { mapState, mapActions } from 'pinia';
 import taskStore from '@/store/task';
 import userStore from '@/store/user';

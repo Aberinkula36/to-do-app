@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img src="../assets/logo.jpg" alt="" class="img-fluid">
+    <img src="../assets/logo.jpg" alt="" class="img-fluid animate__animated animate__slideInUp">
   </div>
   <nav>
     <router-link to="/" v-if="user">Home </router-link>
@@ -26,7 +26,7 @@ export default {
 <style scoped>
 .logo{
   display: inline-block;
-  width: 140px;
+  width: 160px;
 }
 
 nav a {
