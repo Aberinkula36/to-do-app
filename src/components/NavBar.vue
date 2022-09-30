@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img src="../assets/logo.jpg" alt="" class="img-fluid animate__animated animate__slideInUp">
+    <img src="../assets/logo.jpg" alt="" class="img-fluid animate__animated animate__backInUp">
   </div>
   <nav>
     <router-link to="/" v-if="user">Home </router-link>
