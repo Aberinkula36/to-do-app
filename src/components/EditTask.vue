@@ -46,6 +46,7 @@ export default {
       try {
         await this.edit(this.taskProp.id, this.title, this.desc, this.fecha, this.isComplete);
         this.$router.push({ path: '/' });
+        this.$router.go(0);
       } catch (e) {
         console.log(e);
       }
