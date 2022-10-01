@@ -9,7 +9,7 @@
       <label for="password">Contraseña
         <input id="password" type="password" v-model="password">
       </label> <br>
-      <button class="btn btn-info">Entrar</button>
+      <button class="btn btn-success">Entrar</button>
     </form>
   </div>
   </div>

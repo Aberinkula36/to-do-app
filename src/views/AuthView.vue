@@ -1,7 +1,7 @@
 <!-- eslint-disable max-len -->
 <template>
   <div class="container">
-  <h1>¿Todavía no estás registrado?</h1>
+  <h2>Bienvenido a To-Do-App</h2>
   <p>To-Do-App es un gestor de tareas creado para ti, <span class="fun">despistado/a <span class="big">🤔</span> </span>. Crea, modifica, y completa tareas sin olvidar nada por el camino. <span class="fun">¿A qué esperas?</span></p>
   <div class="formulario">
     <form @submit.prevent="handleSignUp">
@@ -11,7 +11,9 @@
       <label for="password">Contraseña
         <input id="password" type="password" v-model="password">
       </label> <br>
-      <button class="btn btn-info">¡Regístrate!</button>
+      <button class="btn btn-info button btn-lg">¡Regístrate!</button> <br><br>
+      <h3>¿Ya tienes usuario?</h3>
+      <button class="btn btn-success button" @click="LogIn()">Entra</button>
     </form>
   </div>
   </div>
@@ -61,6 +63,9 @@ export default {
         alert('Este email ya está registrado.');
       }
     },
+    LogIn() {
+      this.$router.push({ path: '/signin' });
+    },
   },
   watch: {
     user() {
@@ -74,6 +79,9 @@ export default {
 </script>
 
 <style scoped>
+.button {
+  margin: 5px;
+}
 .container {
   display: inline-block;
   border: 1px solid lightblue;

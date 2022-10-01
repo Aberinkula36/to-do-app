@@ -1,6 +1,7 @@
 <template>
   <NavBar/>
   <router-view/>
+  <FooterApp/>
 </template>
 
 <script>
@@ -8,6 +9,7 @@ import { mapState, mapActions } from 'pinia';
 import userStore from '@/store/user';
 import taskStore from '@/store/task';
 import NavBar from './components/NavBar.vue';
+import FooterApp from './components/FooterApp.vue';
 
 export default {
   name: 'App',
@@ -21,6 +23,7 @@ export default {
   },
   components: {
     NavBar,
+    FooterApp,
   },
   async created() {
     try {
